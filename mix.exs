@@ -3,10 +3,26 @@ defmodule ExGraphsBook.MixProject do
 
   def project do
     [
+      aliases: aliases(),
+      apps: [
+        :graph_commons,
+        :native_graph,
+        :property_graph,
+        :rdf_graph,
+        :tinker_graph
+      ],
       apps_path: "apps",
-      version: "0.1.0",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      docs: [
+        main: "readme", extras: ["README.md"]
+      ]
+    ]
+  end
+
+  defp aliases do
+    [
+      test_graph_commons: "cmd --app graph_commons mix test --color"
     ]
   end
 
